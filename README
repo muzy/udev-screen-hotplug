@@ -1,0 +1,27 @@
+ Screen Hotplug Script for udev
+
+ (c) Sebastian Muszytowski <muzy@muzybot.de>
+ inspired by derf0 <https://derf.homelinux.org>
+
+ Prerequisites:
+
+  configure udev:
+  -> check which subsystem is used (execute "sudo udevadm monitor" and plug and disconnect screen)
+  -> create an udev rule
+     Example (for "drm" subsystem)
+
+         SUBSYSTEM=="drm", ACTION=="change", RUN+="/path/to/display.sh"
+
+  -> make sure that /tmp is writeable
+  -> make sure that display.sh  is executeable (chmod +x /path/to/display.sh)
+
+  -> configure absolute path to the config file (cpath in display.sh)
+
+  configure script:
+  -> open config.inc in an editor of your choice
+  -> configure it your way
+
+  restart udev (/etc/init.d/udev restart)
+
+  HAVE FUN!
+
